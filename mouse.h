@@ -83,7 +83,7 @@ typedef enum {
 //------------------------------------------------------------------------------
 //  Macros and global constants
 //------------------------------------------------------------------------------
-/// @name Touch Bar Switches
+/// @name Touch Bar Switches      n
 /// We assume that PTAD0-3 are connected to switches.
 //@{
 #define touchBarFrontLeft   PTAD_PTAD1
