@@ -52,8 +52,17 @@ void AvoidObstacle()
                 ControlMouse(MOUSE_ACTION_TURNAROUND);	// 180 dgree turn
             }  */
         }
-        else if (touchBarRearRight /*&& !touchBarFrontRight*/) {
+        else if (touchBarFrontRight && !touchBarFrontLeft) {
             // left bar is touched; avoid left obstacle
+            ControlMouse(MOUSE_ACTION_STOP);
+            Delay(500);
+            ControlMouse(MOUSE_ACTION_REVERSE);
+            Delay(500);
+            ControlMouse(MOUSE_ACTION_TURNLEFT);
+            Delay(500);
+        }
+        else if (touchBarFrontLeft && !touchBarFrontRight) {
+            // right bar is touched; avoid right obstacle
             ControlMouse(MOUSE_ACTION_STOP);
             Delay(500);
             ControlMouse(MOUSE_ACTION_REVERSE);
@@ -61,17 +70,32 @@ void AvoidObstacle()
             ControlMouse(MOUSE_ACTION_TURNRIGHT);
             Delay(500);
         }
-        /*else if (!touchBarFrontLeft && touchBarFrontRight) {
+        else if (touchBarRearRight && !touchBarRearLeft) {
+            // left bar is touched; avoid left obstacle
+            ControlMouse(MOUSE_ACTION_STOP);
+            Delay(500);
+            ControlMouse(MOUSE_ACTION_FORWARD);
+            Delay(500);
+            ControlMouse(MOUSE_ACTION_TURNLEFT);
+            Delay(500);
+        }
+        else if (touchBarRearLeft && !touchBarRearRight) {
             // right bar is touched; avoid right obstacle
             ControlMouse(MOUSE_ACTION_STOP);
-            ControlMouse(MOUSE_ACTION_REVERSE);
-            ControlMouse(MOUSE_ACTION_TURNLEFT);
-        }
-        else {
+            Delay(500);
+            ControlMouse(MOUSE_ACTION_FORWARD);
+            Delay(500);
+            ControlMouse(MOUSE_ACTION_TURNRIGHT);
+            Delay(500);
+        }  
+        /*else {
             // both bars are touched; avoid front obstacle
             ControlMouse(MOUSE_ACTION_STOP);
+            Delay(500);
             ControlMouse(MOUSE_ACTION_REVERSE);
-            ControlMouse(MOUSE_ACTION_TURNAROUND);	// 180 dgree turn
+            Delay(500);
+            ControlMouse(MOUSE_ACTION_TURNAROUND);	// 180 degree turn
+            Delay(500);
         }  */
     } // end of for() loop
 }
